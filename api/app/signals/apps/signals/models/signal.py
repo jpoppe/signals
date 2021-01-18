@@ -4,7 +4,7 @@ import uuid
 
 from django.conf import settings
 from django.contrib.gis.db import models
-from django.contrib.postgres.fields import ArrayField, JSONField
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -80,7 +80,7 @@ class Signal(CreatedUpdatedModel):
     # file will be saved to MEDIA_ROOT/uploads/2015/01/30
     upload = ArrayField(models.FileField(upload_to='uploads/%Y/%m/%d/'), null=True)  # TODO: remove
 
-    extra_properties = JSONField(null=True)
+    extra_properties = models.JSONField(null=True)
 
     # SIG-884
     parent = models.ForeignKey(to='self', related_name='children', null=True, blank=True,
