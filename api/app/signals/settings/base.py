@@ -136,7 +136,7 @@ DATABASE_OPTIONS = {
         'NAME': os.getenv('DATABASE_NAME', 'signals'),
         'USER': os.getenv('DATABASE_USER', 'signals'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'insecure'),
-        'HOST': get_docker_host(),
+        'HOST': 'basis-db.postgres.database.azure.com',
         'PORT': '5432',
         # 'PORT': '5409',
     },
