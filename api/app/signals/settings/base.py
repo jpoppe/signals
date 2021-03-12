@@ -23,14 +23,16 @@ DEBUG = False
 
 # localhost and 127.0.0.1 are allowed because the deployment process checks the health endpoint with a
 # request to localhost:port
-DEFAULT_ALLOWED_HOSTS = 'api.data.amsterdam.nl,acc.api.data.amsterdam.nl,localhost,127.0.0.1'
+# DEFAULT_ALLOWED_HOSTS = 'api.data.amsterdam.nl,acc.api.data.amsterdam.nl,localhost,127.0.0.1'
+DEFAULT_ALLOWED_HOSTS = '0.0.0.0'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', DEFAULT_ALLOWED_HOSTS).split(',')
 
 INTERNAL_IPS = ('127.0.0.1', '0.0.0.0')
 CORS_ORIGIN_ALLOW_ALL = True
 SITE_ID = 1
 SITE_NAME = 'Signalen API'
-SITE_DOMAIN = os.getenv('SITE_DOMAIN', 'api.data.amsterdam.nl')
+# SITE_DOMAIN = os.getenv('SITE_DOMAIN', 'api.data.amsterdam.nl')
+SITE_DOMAIN = os.getenv('SITE_DOMAIN', 'basis-staging-signalen-backend.azurewebsites.net')
 
 ORGANIZATION_NAME = os.getenv('ORGANIZATION_NAME', 'Gemeente Amsterdam')
 
@@ -135,7 +137,7 @@ DATABASE_OPTIONS = {
     LocationKey.local: {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': os.getenv('DATABASE_NAME', 'signals'),
-        'USER': os.getenv('DATABASE_USER', 'signals'),
+        'USER': os.getenv('DATABASE_USER', 'signals@basis-db'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'insecure'),
         'HOST': 'basis-db.postgres.database.azure.com',
         'PORT': '5432',
