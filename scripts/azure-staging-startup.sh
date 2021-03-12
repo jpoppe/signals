@@ -7,6 +7,8 @@ python /home/site/wwwroot/api/app/manage.py collectstatic
 
 echo "🦄 starting gunicorn 🦄"
 
-gunicorn --workers 2 --threads 2 --timeout 60 --access-logfile '/var/log/gunicorn-access.log' \
-  --error-logfile '/var/log/gunicorn-error.log' --bind=0.0.0.0:8000 \
+gunicorn --workers 2 --threads 2 --timeout 60 --bind=0.0.0.0:8000 \
+  --access-logfile=/var/log/gunicorn-access.log \
+  --error-logfile=/var/log/gunicorn-error.log \
+  --capture-output=true \
   --chdir=/home/site/wwwroot/api/app signals.wsgi
