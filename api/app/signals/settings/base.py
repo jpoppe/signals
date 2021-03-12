@@ -17,7 +17,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TRUE_VALUES = [True, 'True', 'true', '1']
 
 # Django settings
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SIGNALS_PASSWORD', 'insecure')
 DEBUG = False
 
 # localhost and 127.0.0.1 are allowed because the deployment process checks the health endpoint with a
