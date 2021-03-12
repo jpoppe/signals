@@ -5,6 +5,8 @@ apt-get install -y sl gdal-bin python3-gdal libcairo2 python-gobject-2 libpango-
 
 # /antenv/bin/python /home/site/wwwroot/api/app/manage.py collectstatic
 
+echo "🦄 starting gunicorn 🦄"
+
 gunicorn --workers 2 --threads 2 --timeout 60 --access-logfile \
     '-' --error-logfile '-' --bind=0.0.0.0:8000 \
      --chdir=/home/site/wwwroot/api/app signals.wsgi
